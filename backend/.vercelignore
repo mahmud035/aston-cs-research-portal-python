@@ -1,0 +1,9 @@
+__pycache__/
+*.xlsx
+*.xls
+*.csv
+*.log
+logs/
+scripts/
+project-dataset.xlsx
+.env

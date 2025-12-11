@@ -1,19 +1,15 @@
-from dotenv import load_dotenv
+from functools import lru_cache
 from pymongo import MongoClient
-from pymongo.database import Database
 import os
 
-load_dotenv()
-
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
+MONGO_URI = os.getenv("MONGO_URI")
 DB_NAME = os.getenv("DB_NAME", "aston_cs_research_portal")
 
-client = MongoClient(MONGO_URI)
-db = client[DB_NAME]
+
+@lru_cache(maxsize=1)
+def get_client():
+    return MongoClient(MONGO_URI)
 
 
-def get_db() -> Database:
-    """
-    Dependency for route handlers to get MongoDB database handle.
-    """
-    return db
+def get_db():
+    return get_client()[DB_NAME]

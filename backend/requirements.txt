@@ -5,3 +5,4 @@ python-dotenv
 pydantic
 pandas
 openpyxl
+# mangum  <-- remove or leave, but it's dead weight now

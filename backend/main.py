@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from app.core.error_handlers import http_error_handler, mongo_error_handler
@@ -8,13 +7,23 @@ from app.modules.faculty.controller import router as faculty_router
 from app.modules.publication.controller import router as publication_router
 from app.modules.search.controller import router as search_router
 
-from app.core.db import get_db  # <-- new import
 
 load_dotenv()
 
 app = FastAPI(title="Aston CS Research Portal API")
 
-# Register routers
+
+# --------------------------------------------------------
+# 🔥 Root route
+# --------------------------------------------------------
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "Aston CS Research Portal Backend Running"}
+
+
+# --------------------------------------------------------
+# Routers
+# --------------------------------------------------------
 app.include_router(
     department_router, prefix="/api/v1/departments", tags=["departments"]
 )
@@ -24,6 +33,8 @@ app.include_router(
 )
 app.include_router(search_router, prefix="/api/v1/search", tags=["search"])
 
-# Register exception handlers
+# --------------------------------------------------------
+# Error handlers
+# --------------------------------------------------------
 app.add_exception_handler(Exception, mongo_error_handler)
 app.add_exception_handler(HTTPException, http_error_handler)

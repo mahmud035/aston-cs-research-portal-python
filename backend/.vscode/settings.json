@@ -1,0 +1,7 @@
+{
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}",
+    "${workspaceFolder}/app"
+  ],
+  "cSpell.words": ["bson", "depts", "dotenv", "facs"]
+}

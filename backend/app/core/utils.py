@@ -1,5 +1,6 @@
 from typing import Any, Optional
 
+
 def send_response(
     data: Any,
     status_code: int = 200,
@@ -8,13 +9,12 @@ def send_response(
     meta: Optional[dict] = None,
 ) -> dict:
     """
-    Unified response format — same as in Node version.
-    Returns a dict ready to be returned by FastAPI.
+    Unified response format.
     """
     return {
         "statusCode": status_code,
         "success": success,
-        "message": message or None,
-        "meta": meta or None,
-        "data": data if data is not None else None,
+        "message": message,
+        "meta": meta,
+        "data": data,
     }

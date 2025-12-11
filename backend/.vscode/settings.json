@@ -3,5 +3,5 @@
     "${workspaceFolder}",
     "${workspaceFolder}/app"
   ],
-  "cSpell.words": ["bson", "depts", "dotenv", "facs"]
+  "cSpell.words": ["bson", "depts", "dotenv", "facs", "uvicorn"]
 }

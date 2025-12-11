@@ -193,7 +193,7 @@ Visit:
 http://127.0.0.1:8000/docs
 ```
 
-This UI allows you to test all endpoints interactively.
+**This UI allows you to test all endpoints interactively.**
 
 ---
 

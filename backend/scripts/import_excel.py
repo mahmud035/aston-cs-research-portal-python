@@ -17,11 +17,20 @@ from bson import ObjectId
 from dotenv import load_dotenv
 import pandas as pd
 
-load_dotenv()
+load_dotenv()  # this loads variables from .env into environment
 
-# Config — adjust as needed
-MONGO_URI = os.getenv("DATABASE_URL", "mongodb://localhost:27017")
-DB_NAME = os.getenv("DB_NAME", "aston_cs_research_portal")
+# Config — require environment variables
+MONGO_URI = os.getenv("MONGO_URI")  # now uses whatever is in .env
+DB_NAME = os.getenv("DB_NAME")
+
+if not MONGO_URI:
+    raise RuntimeError(
+        "Environment variable MONGO_URI is not set — please define it in .env"
+    )
+if not DB_NAME:
+    raise RuntimeError(
+        "Environment variable DB_NAME is not set — please define it in .env"
+    )
 
 # Excel file — change path if needed
 EXCEL_FILE = "project-dataset.xlsx"

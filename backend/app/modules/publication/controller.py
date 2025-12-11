@@ -13,7 +13,10 @@ router = APIRouter()
 def list_publications(db: Database = Depends(get_db)):
     pubs = service.get_all_publications(db)
     return send_response(
-        pubs, status_code=200, message="Publications retrieved successfully"
+        pubs,
+        status_code=200,
+        message="Publications retrieved successfully",
+        meta={"total": len(pubs)},
     )
 
 

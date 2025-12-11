@@ -13,7 +13,10 @@ router = APIRouter()
 def list_departments(db: Database = Depends(get_db)):
     depts = service.get_all_departments(db)
     return send_response(
-        depts, status_code=200, message="Departments retrieved successfully"
+        depts,
+        status_code=200,
+        message="Departments retrieved successfully",
+        meta={"total": len(depts)},
     )
 
 

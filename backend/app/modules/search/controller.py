@@ -23,4 +23,5 @@ def search(
         {"publications": pubs, "faculties": facs},
         status_code=200,
         message="Search results retrieved successfully",
+        meta={"total": len(pubs) + len(facs)},
     )
